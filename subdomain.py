@@ -7,8 +7,7 @@ load_dotenv('/opt/.env')
 
 X_Auth_Key = os.environ['X_Auth_Key']
 ACCOUNT_ID = os.environ['ACCOUNT_ID']
-SUBDOMAIN = os.environ['SUBDOMAIN']
-IP = os.environ['IP']
+CDNDOMAIN = os.environ['CDNDOMAIN']
 DOMAIN = os.environ['DOMAIN']
 X_Auth_Email = os.environ['EMAIL']
 
@@ -35,7 +34,7 @@ def get_zoneid(domain):
     zoneid = data['result'][0].get('id')
     return zoneid
 
-def create_subdomain(SUBDOMAIN, DOMAIN, IP):
+def create_subdomain(CDNDOMAIN, DOMAIN, IP):
     zoneid = get_zoneid(DOMAIN)
     headers = {
         'X-Auth-Email': '{}'.format(X_Auth_Email),
@@ -44,9 +43,9 @@ def create_subdomain(SUBDOMAIN, DOMAIN, IP):
     }
 
     json_data = {
-        'type': 'A',
-        'name': '{}'.format(SUBDOMAIN),
-        'content': '{}'.format(IP),
+        'type': 'CNAME',
+        'name': 'cdn',
+        'content': '{}'.format(domain),
         'ttl': 1,
         'proxied': False,
 }

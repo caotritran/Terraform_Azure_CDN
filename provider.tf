@@ -19,7 +19,7 @@ provider "azurerm" {
   features {}
 
   subscription_id = "HERE"
-  tenant_id       = "HERE"
-  client_id       = "HERE"
-  client_secret   = "HERE"
+  tenant_id = "HERE"
+  client_id = "HERE"
+  client_secret = "HERE"
 }
