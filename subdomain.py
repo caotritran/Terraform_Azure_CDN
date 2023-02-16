@@ -34,7 +34,7 @@ def get_zoneid(domain):
     zoneid = data['result'][0].get('id')
     return zoneid
 
-def create_subdomain(CDNDOMAIN, DOMAIN, IP):
+def create_subdomain(CDNDOMAIN, DOMAIN):
     zoneid = get_zoneid(DOMAIN)
     headers = {
         'X-Auth-Email': '{}'.format(X_Auth_Email),
@@ -45,7 +45,7 @@ def create_subdomain(CDNDOMAIN, DOMAIN, IP):
     json_data = {
         'type': 'CNAME',
         'name': 'cdn',
-        'content': '{}'.format(domain),
+        'content': '{}'.format(CDNDOMAIN),
         'ttl': 1,
         'proxied': False,
 }
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     headers = ["Type", "Name", "Content"]
     text = ""
 
-    state = create_subdomain(SUBDOMAIN, DOMAIN, IP)
+    state = create_subdomain(CDNDOMAIN, DOMAIN)
     if state.status_code == 200:
         text = "Create subdomain success, status code {}".format(state.status_code)
         data = json.loads(state.text)
