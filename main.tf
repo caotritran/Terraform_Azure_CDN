@@ -16,13 +16,33 @@ resource "azurerm_cdn_endpoint" "tf_endpoint" {
   location            = var.resource_group_location
   resource_group_name = var.azurerm_resource_group
   querystring_caching_behaviour = "NotSet"
-  is_http_allowed               = true
+  #is_http_allowed               = true
   is_https_allowed              = true
 
   origin {
     name      = var.prefix_domain
     host_name = var.domain
   }
+  ### Code added
+      delivery_rule {
+        name  = "EnforceHTTPS"
+        order = "1"
+
+        request_scheme_condition {
+          operator     = "Equal"
+          match_values = ["HTTP"]
+        }
+
+        url_redirect_action {
+          redirect_type = "Found"
+          protocol      = "Https"
+        }
+      }
+    ### End code added
+
+      depends_on = [
+        azurerm_cdn_profile.tf_endpoint
+      ]
 }
 
 # data "azurerm_dns_zone" "dns_zone" {
