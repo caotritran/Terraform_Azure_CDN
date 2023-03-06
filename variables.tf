@@ -1,6 +1,6 @@
 variable "azurerm_resource_group" {
   type    = string
-  default = "Terraform"
+  default = "Account_group"
 }
 
 variable "resource_group_location" {
