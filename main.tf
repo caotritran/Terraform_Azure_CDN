@@ -24,25 +24,21 @@ resource "azurerm_cdn_endpoint" "tf_endpoint" {
     host_name = var.domain
   }
   ### Code added
-      delivery_rule {
-        name  = "EnforceHTTPS"
-        order = "1"
+  delivery_rule {
+    name  = "EnforceHTTPS"
+    order = "1"
 
-        request_scheme_condition {
-          operator     = "Equal"
-          match_values = ["HTTP"]
-        }
+  request_scheme_condition {
+     operator     = "Equal"
+     match_values = ["HTTP"]
+   }
 
-        url_redirect_action {
-          redirect_type = "Found"
-          protocol      = "Https"
-        }
+   url_redirect_action {
+      redirect_type = "Found"
+      protocol      = "Https"
       }
+   }
     ### End code added
-
-      depends_on = [
-        azurerm_cdn_profile.tf_endpoint
-      ]
 }
 
 # data "azurerm_dns_zone" "dns_zone" {
