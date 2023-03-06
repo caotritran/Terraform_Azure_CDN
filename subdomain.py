@@ -44,7 +44,7 @@ def create_subdomain(CDNDOMAIN, DOMAIN):
 
     json_data = {
         'type': 'CNAME',
-        'name': 'cdn',
+        'name': 'cdn-a',
         'content': '{}'.format(CDNDOMAIN),
         'ttl': 1,
         'proxied': False,
