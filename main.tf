@@ -42,7 +42,7 @@ resource "azurerm_cdn_endpoint" "tf_endpoint" {
 resource "azurerm_cdn_endpoint_custom_domain" "custom_domain" {
   name            = "custom-domain"
   cdn_endpoint_id = azurerm_cdn_endpoint.tf_endpoint.id
-  host_name       = "cdn-a.${var.domain}"
+  host_name       = "cdn.${var.domain}"
   cdn_managed_https {
     certificate_type = "Shared"
     protocol_type    = "IPBased"
