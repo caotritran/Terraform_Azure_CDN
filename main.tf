@@ -48,4 +48,4 @@ resource "azurerm_cdn_endpoint" "tf_endpoint" {
 #     protocol_type    = "IPBased"
 #     tls_version      = "None"
 #   }
-}
+#}
