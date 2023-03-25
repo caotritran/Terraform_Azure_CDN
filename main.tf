@@ -23,8 +23,8 @@ resource "azurerm_cdn_endpoint" "tf_endpoint" {
   origin {
     name      = var.prefix_domain
     host_name = var.domain
-    http_port = null
-    https_port = null
+    http_port = ""
+    https_port = ""
   }
 }
 
