@@ -18,6 +18,7 @@ resource "azurerm_cdn_endpoint" "tf_endpoint" {
   querystring_caching_behaviour = "NotSet"
   is_http_allowed               = true
   is_https_allowed              = true
+  optimization_type             = "GeneralWebDelivery"
 
   origin {
     name      = var.prefix_domain
